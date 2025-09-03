@@ -5,6 +5,7 @@
 - 📫 How to reach me <ohsungc2@naver.com>
 
 - 🕹️ `msp430_heatmap.py` shows a real-time 8×8 heatmap from an MSP430FR2633 via a CH341T I²C adapter using `pyqtgraph`.
+- 🧪 `fr2633_i2c_test.py` verifies basic I²C communication with the MSP430FR2633 by requesting cycle packets and printing raw values.
 
 <!---
 ohsungc/ohsungc is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
