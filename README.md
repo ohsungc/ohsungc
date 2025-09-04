@@ -1,10 +1,26 @@
-- 👋 Hi, I’m @ohsungc. I was korean university student. currently i've been expelled. and i'm finding for a new path.
-- 👀 I’m interested in making money by programing (doesn't know  what specific feild would be fit to me)
-- 🌱 I’m currently learning C
-- 💞️ I’m not looking to collaborate on yet. doesn't have any 
-- 📫 How to reach me <ohsungc2@naver.com>
+# MSP430FR2633 I2C Bridge
 
-<!---
-ohsungc/ohsungc is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+This repository contains an Arduino Uno sketch that bridges between a PC and a Texas Instruments MSP430FR2633 capacitive touch controller. The Arduino communicates with the FR2633 over I²C and streams raw sensor data back to the PC over UART.
+
+## Firmware
+
+- **fr2633_bridge.ino** – firmware for Arduino Uno
+  - The PC sends the character `r` over the serial port to request one full scan.
+  - The Arduino polls all 16 CapTIvate cycles from the MSP430 and sends a `CA64` frame containing 64 little-endian `uint16_t` raw values along with a CRC16 checksum.
+
+## Python viewer
+
+- **serial_heatmap.py** – Tkinter/Matplotlib GUI
+  - Run `python serial_heatmap.py`, select the serial port and click **START** to stream frames.
+  - Displays an 8×8 heatmap of raw counts parsed from `CA64` frames and logs basic statistics.
+
+## Building
+
+1. Open `fr2633_bridge.ino` in the Arduino IDE.
+2. Select **Arduino Uno** and the correct serial port.
+3. Upload the sketch.
+
+## Requirements
+
+- Arduino Uno connected to MSP430FR2633 over I²C (400 kHz, address `0x0A`).
+- Python 3 with `pyserial`, `numpy` and `matplotlib` installed for the heatmap viewer.
